@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>MindSystem - Login</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="./assets/css/animate.css">
+    <link rel="shortcut icon" href="./assets/img/logohead.png" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <div class="bg">
+        <nav>
+            <a href="./index.html">
+                <img src="assets/img/logo/logo-white.png" alt="" class="img-fluid logo mt-0 mr-5">
+            </a>
+        </nav>
+        <div class="container box animated bounceInLeft">
+            <div class="img">
+                <img src="./assets/img/login-page/login-bg.svg" alt="" class="img-fluid">
+            </div>
+            <div class="login-container">
+                <form id="login_form" method="post" onsubmit="return entrar()">
+                    <img class="avatar" src="./assets/img/login-page/avatar-login.svg" alt="">
+                    <h2>Bem-vindo</h2>
+
+                    <div class="input-div first-element">
+                        <div class="icon">
+                            <i class="far fa-user focus"></i>
+                        </div>
+                        <div>
+                            <input type="text" class="input" placeholder="Nome de Usuário" name="userName">
+                        </div>
+                    </div>
+                    <div class="input-div second-element">
+                        <div class="icon">
+                            <i class="fas fa-lock focus"></i>
+                        </div>
+                        <div>
+                            <input class="input" type="password" placeholder="Senha" name="senha">
+                        </div>
+                    </div>
+                    <a href="#">Esqueci a Senha</a>
+                    <input type="submit" class="btn" value="Logar">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/all.min.js"></script>
+</body>
+<script>
+    function entrar() {
+        var formulario = new URLSearchParams(new FormData(login_form));
+        fetch("/usuario/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+
+                    sessionStorage.login_usuario = json.loginUser;
+                    sessionStorage.id_usuario = json.idUsuario;
+
+                    window.location.href = './dashboard/dashboard.html';
+                });
+
+            } else {
+                console.log('Erro de login!');
+                response.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+    
+</script>
+
+</html>

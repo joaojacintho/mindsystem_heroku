@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Mindsystem - Dashboard</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="shortcut icon" href="../assets/img/logohead.png" type="image/x-icon">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="dashboard-main-wrapper">
+            <div class="dashboard-header">
+                <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                    <a class="navbar-brand" href="../index.html"><img src="./assets/images/MINDSYSTEM (6).png"
+                            alt="Logo Mindsystem" class="img-fluid" width="100" height="100"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navbar-right-top">
+                            <li class="nav-item dropdown nav-user">
+                                <a class="mr-5" onclick="logoff()">
+                                    SAIR
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="nav-left-sidebar sidebar-dark">
+                <div class="menu-list">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav flex-column">
+                                <li class="nav-divider">
+                                    Menu - <span id="user_name"></span>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="./dashboard.html" tabindex="-1"
+                                        aria-disabled="true">Dashboard</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="./cadastrar-totem.html" tabindex="-1"
+                                        aria-disabled="true">Cadastrar Totem</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+
+            <div class="container col-6 d-flex justify-content-center mt-5 mr-5">
+                <form id="formCinema" onsubmit="return cadastrarTotem()">
+                    <div class="flex-aligned mt-5">
+                        <div>
+                            <label for="">Posição do Totem</label><br>
+                            <p class="font-weight-lighter">Cadastre em qual posição o totem se encontra</p>
+                            <input class="input " type="text" name="nome_cinema">
+                        </div>
+                    </div>
+                    <div class="flex-aligned">
+                        <div class="fill-width mt5"></div>
+                        <button class="mt-3 button btn btn-primary">Cadastrar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <script src="./assets/js/funcoes.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+    <script>
+        verificar_autenticacao()
+
+
+        function cadastrarTotem() {
+            var cadastrarTotem = new URLSearchParams(new FormData(formCinema));
+            fetch("/totem/cadastrar", {
+                method: "POST",
+                body: cadastrarTotem
+            }).then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        sessionStorage.nome_cinema = json.posicaoTotem;
+
+                    });
+                }
+            });
+
+            return false;
+            location.reload()
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+.modal{
+    max-width: 100vw;
+    margin: auto 3%;
+}
+
+.modal-content{
+    width: 95vw;
+    min-height: 100vh;
+}
+
+
+.modal-dialog{
+    margin: 20px 0px;
+}
+
+.progress-bar{
+    background-color: #465059;
+    color: #F3F3F3;
+}

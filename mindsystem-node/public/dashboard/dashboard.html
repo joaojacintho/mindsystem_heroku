@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Mindsystem - Dashboard</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+    <link rel="shortcut icon" href="../assets/img/logohead.png" type="image/x-icon">
+
+
+</head>
+
+<body>
+
+    <div class="nav-left-sidebar sidebar-dark">
+        <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-divider">
+                            Menu - <span id="user_name"></span>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./dashboard.html" tabindex="-1" aria-disabled="true">Dashboard</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="./cadastrar-totem.html" tabindex="-1"
+                                aria-disabled="true">Cadastrar Totem</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="dashboard-main-wrapper">
+            <div class="dashboard-header">
+                <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                    <a class="navbar-brand" href="../index.html"><img src="./assets/images/MINDSYSTEM (6).png"
+                            alt="Logo Mindsystem" class="img-fluid" width="100" height="100"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navbar-right-top">
+                            <li class="nav-item dropdown nav-user">
+                                <a class="mr-5 btn btn-outline-dark" onclick="logoff()">
+                                    SAIR
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+
+
+            <div class="dashboard-wrapper">
+                <div class="dashboard-ecommerce">
+                    <div class="container-fluid dashboard-content ">
+                        <div class="ecommerce-widget">
+                            <div class="row">
+                                <div class="col-sm-12 d-flex">
+                                    <div class="card mr-3" style="width: 18rem; height: 20rem;" data-toggle="modal"
+                                        data-target="#totem1">
+                                        <div class="card-body">
+                                            <img class="img-fluid float-right" src="./assets/images/expand.png"
+                                                width="50">
+                                            <h5 class="card-title mt-5" id="totemID">Totem 01</h5>
+                                            <div id="cardTotem1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card" style="width: 18rem; height: 20rem;" data-toggle="modal"
+                                        data-target="#totem2">
+                                        <div class="card-body">
+                                            <img class="animate__animated animate__pulse animate__infinite img-fluid float-left"
+                                                id="bellAlert"
+                                                title="Não foi detectado dados nos ultimos 7 dias, por favor verificar"
+                                                src="./assets/images/bell.svg" width="30">
+                                            <img class="img-fluid float-right mb" src="./assets/images/expand.png"
+                                                width="50">
+                                            <h5 class="card-title mt-5"><span id="totemID">Totem 02</span></h5>
+                                            <div id="cardTotem2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 d-flex ">
+                                    <div class="card mr-3" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <img class="animate__animated animate__pulse animate__infinite img-fluid float-right"
+                                                id="bellAlert" src="./assets/images/bell.svg" width="30">
+                                            <h5 class="card-title" id="totemID">Totem 03</h5>
+                                            <div id="cardTotem3">
+                                            </div>
+                                            <h6 class="font-weight-light">Ainda não foram registrado nenhum dado</h6>
+
+                                        </div>
+                                    </div>
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <img class="animate__animated animate__pulse animate__infinite img-fluid float-right"
+                                                id="bellAlert" src="./assets/images/bell.svg" width="30">
+                                            <h5 class="card-title" id="totemID">Totem 04</h5>
+                                            <div id="cardTotem4">
+                                            </div>
+                                            <h6 class="font-weight-light">Ainda não foram registrado nenhum dado</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="card">
+                                        <h5 class="card-header d-flex justify-content-end">Lista de Totens</h5>
+                                        <div class="card-body p-0">
+                                            <div class="table-responsive">
+                                                <table class="table no-wrap p-table" id="tableTotens">
+                                                    <thead class="bg-light">
+                                                        <tr class="border-0">
+                                                            <th class="border-0">ID Totem</th>
+                                                            <th class="border-0">Posição Totem</th>
+                                                            <th class="border-0">Nome Cinema</th>
+                                                            <th class="border-0">Status</th>
+                                                            <th class="border-0">X</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- TABLE -->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Modal -->
+                            <div class="modal fade" id="totem1" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title ml-4" id="modalLabel">Report</h4>
+                                            <div class="float-right">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="generatePDFReport(tableToPDF)">Gerar Relatorio</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="row" id="contentChart">
+                                                    <div class="col">
+                                                        <canvas id="chartTotensMemoria" height="250"></canvas>
+                                                    </div>
+                                                    <div class="col">
+                                                        <canvas id="chartTotensCPU" height="250"></canvas>
+                                                    </div>
+                                                    <div class="col">
+                                                        <canvas id="chartTotensDisco" height="250"></canvas>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="grafico-infeior col-12">
+                                                        <div class="col-12" id="tableToPDF">
+                                                            <table class="table no-wrap p-table col-12"
+                                                                id="tableRegistros">
+                                                                <thead class="bg-light">
+                                                                    <tr class="border-0">
+                                                                        <th class="border-0">ID Totem</th>
+                                                                        <th class="border-0">Data do Registro</th>
+                                                                        <th class="border-0">Componente</th>
+                                                                        <th class="border-0">Metrica</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <div id="navbar-example">
+                                                                    <ul class="nav nav-tabs" role="tablist">
+                                                                        <tbody>
+                                                                            <!-- DADOS SENDO ENVIADOS PRA K -->
+                                                                        </tbody>
+                                                                    </ul>
+                                                                </div>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="totem2" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title ml-4" id="modalLabel">Report</h4>
+                                            <div class="float-right">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="generatePDFReport(tableToPDF)">Gerar Relatorio</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <canvas id="chartTotensMemoria2" height="250"></canvas>
+                                                    </div>
+                                                    <div class="col">
+                                                        <canvas id="chartTotensCPU2" height="250"></canvas>
+                                                    </div>
+                                                    <div class="col">
+                                                        <canvas id="chartTotensDisco2" height="250"></canvas>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="grafico-infeior col-12">
+                                                        <div class="col-12" id="tableToPDF2">
+                                                            <table class="table no-wrap p-table col-12"
+                                                                id="tableRegistros2">
+                                                                <thead class="bg-light">
+                                                                    <tr class="border-0">
+                                                                        <th class="border-0">ID Totem</th>
+                                                                        <th class="border-0">Data do Registro</th>
+                                                                        <th class="border-0">Componente</th>
+                                                                        <th class="border-0">Metrica</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <div id="navbar-example">
+                                                                    <ul class="nav nav-tabs" role="tablist">
+                                                                        <tbody>
+                                                                            <!-- DADOS SENDO ENVIADOS PRA K -->
+                                                                        </tbody>
+                                                                    </ul>
+                                                                </div>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="./assets/js/funcoes.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+
+
+    <script src="./assets/js/totem-dashboard.js"></script>
+    <script src="./assets/js/totem-table.js"></script>
+    <script src="./assets/js/modal-dash/memoria.js"></script>
+    <script src="./assets/js/modal-dash/cpu.js"></script>
+    <script src="./assets/js/modal-dash/disco.js"></script>
+    <script src="./assets/js/modal-dash/registros-table.js"></script>
+    <script src="./assets/js/modal-dash/generator-pdf.js"></script>
+
+
+    <script>
+        //verificar_autenticacao()
+
+        function onload() {
+            window.onload = function () {
+                setInterval(pulseAlert, 1000)
+            }
+        }
+
+        function pulseAlert() {
+            document.getElementById('bellAlert').style.fill = '#FFFFFF'
+        }
+    </script>
+</body>
+
+</html>
